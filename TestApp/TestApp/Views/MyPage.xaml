@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestApp.MyPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label x:Name="label" Text="Clicked Button 0 times" VerticalOptions="Center" HorizontalOptions="Center"></Label>
+            <Button Text="Click Me" BackgroundColor="Gray" TextColor="White" Margin="5" Clicked="Button_Clicked"></Button>
+            <Button Text="UnClick Me" BackgroundColor="Gray" TextColor="White" Margin="5" Clicked="Button_UnClicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
