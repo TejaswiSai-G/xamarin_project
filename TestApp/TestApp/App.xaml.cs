@@ -10,7 +10,7 @@ namespace TestApp
         {
             InitializeComponent();
 
-            MainPage = new MyPage1();
+            MainPage = new QuotesPage();
         }
 
         protected override void OnStart()

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestApp.QuotesPage"
+    Padding="20">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <OnPlatform.Platforms>
+                <On Platform="iOS" Value="20, 40, 20, 20" />
+                <On Platform="Android" Value="20, 30, 20, 20" />
+            </OnPlatform.Platforms>
+        </OnPlatform>
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout>
+            <Button Text="Next" Clicked="Button_Clicked"></Button>
+            <Label x:Name="label1"></Label>
+            <Slider x:Name="Slider1" ValueChanged="Slider1_ValueChanged" Maximum="50" Minimum="16"></Slider>
+            <Label x:Name="label2"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
