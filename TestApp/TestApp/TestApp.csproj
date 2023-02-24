@@ -17,9 +17,11 @@
   <ItemGroup>
     <None Remove="Outputs\" />
     <None Remove="Views\" />
+    <None Remove="Outputs\login_assgnmt_outputs\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Outputs\" />
     <Folder Include="Views\" />
+    <Folder Include="Outputs\login_assgnmt_outputs\" />
   </ItemGroup>
 </Project>

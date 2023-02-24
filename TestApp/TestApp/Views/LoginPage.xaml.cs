@@ -7,6 +7,8 @@ namespace TestApp
 {
     public partial class LoginPage : ContentPage
     {
+        String usern = "admin";
+        string passw = "123";
         public LoginPage()
         {
             InitializeComponent();
@@ -14,9 +16,16 @@ namespace TestApp
 
         async public void LoginButton_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (user.Text!=null && pass.Text!=null && user.Text!=string.Empty && pass.Text!=string.Empty)
+            if (user.Text!=null && pass.Text!=null)
             {
-                await DisplayAlert("Login", user.Text + " has successfully logged in", "OK");
+                if (user.Text == usern && pass.Text == passw)
+                {
+                    await Navigation.PushAsync(new MainPage());
+                }
+                else
+                {
+                    await DisplayAlert("Login", "Entered username or passowrd are incorrect", "OK");
+                }
             }
             else
             {
