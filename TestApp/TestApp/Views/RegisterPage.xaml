@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestApp.RegisterPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="20,30,20,0">
+            <Label Text="REGISTER" FontSize="30"  FontAttributes="Bold" HorizontalOptions="Center"></Label>
+            <Grid Margin="0,20,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <Entry x:Name="fname" Placeholder="First Name" FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                    <Entry x:Name="lnmae" Placeholder="Last Name" FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Grid.Row="1">
+                    <Entry x:Name="email" Placeholder="Email" FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Grid.Row="2">
+                    <Entry x:Name="pass" Placeholder="Password" FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Grid.Row="3">
+                    <Entry x:Name="cpass" Placeholder="Confirm Password" FontSize="16"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <StackLayout Grid.Row="4">
+                    <Entry x:Name="phone" Placeholder="Phone Number" FontSize="16" Keyboard="Telephone"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" Orientation="Horizontal">
+                    <CheckBox x:Name="check" Color="Gray"></CheckBox>
+                    <Label Text="I accept the Terms of Use and Privacy Policy" FontSize="12" VerticalOptions="Center"></Label>
+                </StackLayout>
+
+                <Button Grid.Row="6" Text="Register Now" Clicked="RegisterButton_Clicked" BackgroundColor="Green" TextColor="White" FontAttributes="Bold"></Button>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
