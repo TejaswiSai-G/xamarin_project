@@ -2,13 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TestApp.MainPage">
-
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Home Page!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
-        <Label Text="Your Profile" FontSize="Title" Padding="30,10,30,10"/>
+        <Label x:Name="label1" FontSize="Title" Padding="30,10,30,10"/>
         <Label Text="Find all the profile details below:" FontSize="16" Padding="30,0,30,0"/>
     </StackLayout>
-
 </ContentPage>
