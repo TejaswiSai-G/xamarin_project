@@ -2,12 +2,29 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TestApp"
     x:Class="TestApp.MyPage">
+    <ContentPage.BindingContext>
+        <local:MyPageViewModel></local:MyPageViewModel>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+        <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
             <Label x:Name="label" Text="Clicked Button 0 times" VerticalOptions="Center" HorizontalOptions="Center"></Label>
             <Button Text="Click Me" BackgroundColor="Gray" TextColor="White" Margin="5" Clicked="Button_Clicked"></Button>
             <Button Text="UnClick Me" BackgroundColor="Gray" TextColor="White" Margin="5" Clicked="Button_UnClicked"></Button>
+        </StackLayout>-->
+
+        <!--caluclator using MVVM model-->
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Entry x:Name="entry1" Placeholder="number 1" Text="{Binding Entry1}"></Entry>
+            <Entry x:Name="entry2" Placeholder="number 2" Text="{Binding Entry2}"></Entry>
+            <StackLayout Orientation="Horizontal" Spacing="30" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="add" Text="ADD" Command="{Binding AddCommand}"></Button>
+                <Button x:Name="sub" Text="SUB" Command="{Binding SubCommand}"></Button>
+                <Button x:Name="mul" Text="MUL" Command="{Binding MulCommand}"></Button>
+                <Button x:Name="div" Text="DIV" Command="{Binding DivCommand}"></Button>
+            </StackLayout>
+            <Label x:Name="rslt" Text="{Binding Result}" HorizontalOptions="Center" FontAttributes="Bold"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

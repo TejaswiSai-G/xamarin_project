@@ -21,24 +21,27 @@ namespace TestApp
             //};
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        void add_Clicked(System.Object sender, System.EventArgs e)
         {
-            c++;
-            label.Text = "Clicked Button " + c + " times";
         }
+        //private void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    c++;
+        //    label.Text = "Clicked Button " + c + " times";
+        //}
 
-        void Button_UnClicked(object sender, EventArgs e)
-        {
-            c--;
-            if (c < 0)
-            {
-                c = 0;
-                label.Text = "Clicked Button 0 times";
-            }
-            else
-            {
-                label.Text = "Clicked Button " + c + " times";
-            }
-        }
+        //void Button_UnClicked(object sender, EventArgs e)
+        //{
+        //    c--;
+        //    if (c < 0)
+        //    {
+        //        c = 0;
+        //        label.Text = "Clicked Button 0 times";
+        //    }
+        //    else
+        //    {
+        //        label.Text = "Clicked Button " + c + " times";
+        //    }
+        //}
     }
 }
