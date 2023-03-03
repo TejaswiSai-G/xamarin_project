@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.IO;
 
 namespace TestApp
 {
@@ -9,8 +10,8 @@ namespace TestApp
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new SQliteDemo();
+            MainPage = new NavigationPage(new LoginPage_SQlLite());
         }
 
         protected override void OnStart()

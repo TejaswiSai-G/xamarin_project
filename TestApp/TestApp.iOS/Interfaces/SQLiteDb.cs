@@ -11,8 +11,9 @@ namespace TestApp.iOS
     {
         public SQLiteAsyncConnection GetConnection()
         {
-            var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var path = Path.Combine(documentsPath, "MySQLite.db3");
+            var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            //var path = Path.Combine(documentsPath, "MySQLite.db3");
+            var path = Path.Combine(documentsPath, "UserInfo.db3");
 
             return new SQLiteAsyncConnection(path);
         }

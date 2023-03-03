@@ -14,11 +14,11 @@ namespace TestApp
         {
             InitializeComponent();
 
-            if (Application.Current.Properties.ContainsKey("Name"))
-            {
-                string usern = Application.Current.Properties["Name"].ToString();
-                label1.Text = "Welcome " + usern;
-            }
+            //if (Application.Current.Properties.ContainsKey("Name"))
+            //{
+            //    string usern = Application.Current.Properties["Name"].ToString();
+            //    label1.Text = "Welcome " + usern;
+            //}
         }
     }
 }

@@ -9,7 +9,8 @@ namespace TestApp
     public partial class SQliteDemo : ContentPage
     {
         private SQLiteAsyncConnection _connection;
-        private ObservableCollection<Recipe> _recipes;
+        //private ObservableCollection<Recipe> _recipes;
+        private ObservableCollection<UserInfo> _userInfo;
         public SQliteDemo()
         {
             InitializeComponent();
@@ -17,33 +18,34 @@ namespace TestApp
         }
         protected override async void OnAppearing()
         {
-            await _connection.CreateTableAsync<Recipe>();
-            var recipes = await _connection.Table<Recipe>().ToListAsync();
-            _recipes = new ObservableCollection<Recipe>(recipes);
-            recipesListView.ItemsSource = _recipes;
+            await _connection.CreateTableAsync<UserInfo>();
+            var user_info = await _connection.Table<UserInfo>().ToListAsync();
+            _userInfo = new ObservableCollection<UserInfo>(user_info);
+            listView.ItemsSource = _userInfo;
             base.OnAppearing();
         }
         async void OnAdd(object sender, System.EventArgs e)
         {
-            var receipe = new Recipe { Name = "Receipe" + DateTime.Now.Ticks };
-            await _connection.InsertAsync(receipe);
-            _recipes.Add(receipe);
+            var user_info = new UserInfo { username = "Tejaswi", password = "tej123" };
+            await _connection.InsertAsync(user_info);
+            _userInfo.Add(user_info);
         }
 
         async void OnUpdate(object sender, System.EventArgs e)
         {
-            var receipe = _recipes[0];
-            receipe.Name += "Updated";
+            var user_info = _userInfo[0];
+            user_info.username += " Updated";
+            user_info.password += " Updated";
 
-            await _connection.UpdateAsync(receipe);
+            await _connection.UpdateAsync(user_info);
 
         }
 
         async void OnDelete(object sender, System.EventArgs e)
         {
-            var receipe = _recipes[0];
-            await _connection.DeleteAsync(receipe);
-            _recipes.Remove(receipe);
+            var user_info = _userInfo[0];
+            await _connection.DeleteAsync(user_info);
+            _userInfo.Remove(user_info);
 
         }
     }

@@ -4,16 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="TestApp.SQliteDemo">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" Margin="20,60,20,10">
+        <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal">
-                <Button Text="Add" Clicked="OnAdd" />
+                <!--<Button Text="Add" Clicked="OnAdd" />
                 <Button Text="Update" Clicked="OnUpdate" HorizontalOptions="CenterAndExpand" />
-                <Button Text="Delete" Clicked="OnDelete" />
+                <Button Text="Delete" Clicked="OnDelete" />-->
         </StackLayout>
-        <ListView x:Name="recipesListView">
+        <ListView x:Name="listView">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    <TextCell Text="{Binding username}" Detail="{Binding password}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

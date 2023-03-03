@@ -20,12 +20,12 @@
                     <Entry x:Name="fname" Placeholder="First Name" FontSize="16"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand" />
-                    <Entry x:Name="lnmae" Placeholder="Last Name" FontSize="16"
+                    <Entry x:Name="lname" Placeholder="Last Name" FontSize="16"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand" />
                 </StackLayout>
                 <StackLayout Grid.Row="1">
-                    <Entry x:Name="email" Placeholder="Email" FontSize="16"
+                    <Entry x:Name="username" Placeholder="Username" FontSize="16"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="CenterAndExpand" />
                 </StackLayout>
