@@ -4,9 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:TestApp"
     x:Class="TestApp.MyPage">
-    <ContentPage.BindingContext>
+    <!--<ContentPage.BindingContext>
         <local:MyPageViewModel></local:MyPageViewModel>
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="backgroudColor">Black</Color>
+            <x:Int32 x:Key="buttonRedisus">20</x:Int32>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
             <Label x:Name="label" Text="Clicked Button 0 times" VerticalOptions="Center" HorizontalOptions="Center"></Label>
@@ -15,7 +21,7 @@
         </StackLayout>-->
 
         <!--caluclator using MVVM model-->
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <!--<StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
             <Entry x:Name="entry1" Placeholder="number 1" Text="{Binding Entry1}"></Entry>
             <Entry x:Name="entry2" Placeholder="number 2" Text="{Binding Entry2}"></Entry>
             <StackLayout Orientation="Horizontal" Spacing="30" HorizontalOptions="CenterAndExpand">
@@ -25,6 +31,29 @@
                 <Button x:Name="div" Text="DIV" Command="{Binding DivCommand}"></Button>
             </StackLayout>
             <Label x:Name="rslt" Text="{Binding Result}" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+        </StackLayout>-->
+
+        <!--<WebView x:Name="mywebView"></WebView>-->
+
+         <!--<StackLayout>
+             <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                 <Label Text="Bindable Properties Sample" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+             </Frame>
+             <local:MyPage2 TitleText="{Binding MyTitle}" DescriptionText="{Binding MyDesccrition}"></local:MyPage2>
+         </StackLayout>-->
+
+        <StackLayout Spacing="20" VerticalOptions="Center">
+            <Button Text="Login"
+                    BackgroundColor="{DynamicResource backgroudColor}"
+                    TextColor="White"
+                    CornerRadius="{StaticResource buttonRedisus}"
+                    FontAttributes="Bold"></Button>
+            <Button Text="Register"
+                    BackgroundColor="{DynamicResource backgroudColor}"
+                    TextColor="White"
+                    CornerRadius="{StaticResource buttonRedisus}"
+                    FontAttributes="Bold"></Button>
+            <Button Text="Change Style" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

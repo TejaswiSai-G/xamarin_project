@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage Title="{Binding Name}"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="TestApp.ChildPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Label x:Name="label" Text="{Binding Status}" />
+            <!--<Slider x:Name="silder" ValueChanged="silder_ValueChanged"></Slider>
+            <Label Text="{Binding Source={x:Reference silder},Path=Value}"></Label>-->
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

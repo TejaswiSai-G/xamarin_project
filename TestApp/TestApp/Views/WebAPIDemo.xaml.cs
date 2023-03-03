@@ -5,28 +5,41 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using SQLite;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace TestApp
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class WebAPIDemo : ContentPage
     {
         private const string URL = "https://jsonplaceholder.typicode.com/posts";
+        //private const string URL = "http://192.168.1.6:8078/Post"; 192.168.29.225
         private HttpClient _client = new HttpClient();
         private ObservableCollection<Post> _posts;
 
         public WebAPIDemo()
         {
             InitializeComponent();
+            getData();
         }
 
-        protected override async void OnAppearing()
+        public async void getData()
         {
             var content = await _client.GetStringAsync(URL);
             var post = JsonConvert.DeserializeObject<List<Post>>(content);
             _posts = new ObservableCollection<Post>(post);
             postsListView.ItemsSource = _posts;
-            base.OnAppearing();
         }
+
+        //protected override async void OnAppearing()
+        //{
+        //    var content = await _client.GetStringAsync(URL);
+        //    var post = JsonConvert.DeserializeObject<List<Post>>(content);
+        //    _posts = new ObservableCollection<Post>(post);
+        //    postsListView.ItemsSource = _posts;
+        //    base.OnAppearing();
+        //}
+
         async void OnAdd(object sender, System.EventArgs e)
         {
             var post = new Post { Title = "Hello" + DateTime.Now.Ticks.ToString() };
