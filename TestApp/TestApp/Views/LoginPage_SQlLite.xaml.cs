@@ -20,6 +20,9 @@ namespace TestApp
 
         protected async void checkDB()
         {
+            await _connection.CreateTableAsync<UserInfo>();
+            var user_info = await _connection.Table<UserInfo>().ToListAsync();
+            _userInfo = new ObservableCollection<UserInfo>(user_info);
             if (await _connection.Table<UserInfo>().CountAsync() == 0)
             {
                 var userInfo = new UserInfo();

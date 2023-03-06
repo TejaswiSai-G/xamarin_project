@@ -8,5 +8,6 @@ namespace TestApp
     public  interface ISQLiteDb
     {
         SQLiteAsyncConnection GetConnection();
+        SQLiteAsyncConnection GetConnectionSearch();
     }
 }

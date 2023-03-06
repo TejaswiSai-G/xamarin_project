@@ -10,8 +10,8 @@ namespace TestApp
         public App()
         {
             InitializeComponent();
-            //MainPage = new SQliteDemo();
-            MainPage = new NavigationPage(new LoginPage_SQlLite());
+            MainPage = new SearchInListView();
+            //MainPage = new NavigationPage(new LoginPage_SQlLite());
         }
 
         protected override void OnStart()

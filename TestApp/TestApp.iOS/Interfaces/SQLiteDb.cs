@@ -17,5 +17,12 @@ namespace TestApp.iOS
 
             return new SQLiteAsyncConnection(path);
         }
+        public SQLiteAsyncConnection GetConnectionSearch()
+        {
+            var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            var path = Path.Combine(documentsPath, "ListSearch.db3");
+
+            return new SQLiteAsyncConnection(path);
+        }
     }
 }

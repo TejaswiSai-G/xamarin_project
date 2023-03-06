@@ -1,41 +1,91 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace TestApp
 {
-    public class Contact
+    public class Search
     {
-        public string Name { get; set; }
-        public string Email { get; set; }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        public string location { get; set; }
+        public DateTime checkIn { get; set; }
+        public DateTime checkOut { get; set; }
+        public string checkInAndOut { get => checkIn + " - " + checkOut; }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchInListView : ContentPage
     {
+        private SQLiteAsyncConnection _connection;
+        private ObservableCollection<Search> _search;
         public SearchInListView()
         {
             InitializeComponent();
-            lstView.ItemsSource = GetContacs();
+            _connection = DependencyService.Get<ISQLiteDb>().GetConnectionSearch();
+            checkDB();
         }
-        private IEnumerable<Contact> GetContacs(string searchText = null)
+        protected async void checkDB()
         {
-            var contacs = new List<Contact>() {
-            new Contact{Name="Tejaswi",Email="tejaswi@gmail.com"},
-            new Contact{Name="Admin",Email="admin@gmail.com"},
-            new Contact{Name="User1",Email="user1@gmail.com"},
-            new Contact{Name="User2",Email="user2@gmail.com"},
-        };
+            await _connection.CreateTableAsync<Search>();
+            var search_info = await _connection.Table<Search>().ToListAsync();
+            _search = new ObservableCollection<Search>(search_info);
+            if (await _connection.Table<Search>().CountAsync() == 0)
+            {
+                var searchInfo = new Search();
+                searchInfo.location = "Santa Monica, CA, USA";
+                var cheIn = new DateTime(2023, 12, 01);
+                searchInfo.checkIn = cheIn.Date;
+                var cheOut = new DateTime(2016, 12, 20);
+                searchInfo.checkOut = cheOut.Date;
+                await _connection.InsertAsync(searchInfo);
+             }
+            lstView.ItemsSource = _search;
+        }
+
+        public IEnumerable<Search> GetSearches(string searchText = null)
+        {
             if (string.IsNullOrWhiteSpace(searchText))
-                return contacs;
-            return contacs.Where(x => x.Name.StartsWith(searchText));
+            {
+                return _search;
+            }
+            else 
+            {
+                return _search.Where(x => x.location.StartsWith(searchText));
+            }
         }
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+
+        public void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            lstView.ItemsSource = GetContacs(e.NewTextValue);
+            lstView.ItemsSource = GetSearches(e.NewTextValue);
+        }
+
+        public async void DeleteSearch(object se)
+        {
+            for (int i = 0; i < _search.Count(); i++)
+            {
+                if (se.Equals(_search[i]))
+                {
+                    var info = _search[i];
+                    await _connection.DeleteAsync(info);
+                    _search.Remove(info);
+                }
+            }
+        }
+
+        public async void OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var tappedItem =(Search)e.Item;
+            var rslt = await DisplayAlert("Loaction Details", "Want to delete the "+ tappedItem.location.ToString()+" record", "YES", "NO");
+            if(rslt)
+            {
+                DeleteSearch(tappedItem);
+            }
         }
     }
 }
