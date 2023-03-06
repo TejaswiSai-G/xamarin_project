@@ -14,7 +14,6 @@ namespace TestApp.Droid
             var documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
             //var path = Path.Combine(documentsPath, "MySQLite.db3");
             var path = Path.Combine(documentsPath, "UserInfo.db3");
-            //var path = Path.Combine(documentsPath, "ListSearch.db3");
 
             return new SQLiteAsyncConnection(path);
         }

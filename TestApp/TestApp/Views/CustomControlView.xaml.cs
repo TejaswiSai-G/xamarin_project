@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace TestApp
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MyPage2 : Grid
+    public partial class CustomControlView : ContentView
     {
-        public static readonly BindableProperty TitleTextProperty = BindableProperty.Create(nameof(TitleText),
-            typeof(string),
-            typeof(MyPage2),
-            defaultValue: string.Empty,
-            defaultBindingMode: BindingMode.OneWay,
-            propertyChanged: TitleTextPropertyChanged);
+        public static BindableProperty TitleTextProperty =
+            BindableProperty.Create( nameof(TitleText),
+                typeof(string),typeof(CustomControlView),
+                defaultValue: string.Empty,
+                defaultBindingMode: BindingMode.OneWay,
+                propertyChanged: TitleTextPropertyChanged);
 
         private static void TitleTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MyPage2)bindable;
+            var control = (CustomControlView)bindable;
             control.Title.Text = newValue?.ToString();
         }
 
@@ -34,16 +32,17 @@ namespace TestApp
             }
         }
 
-        public static readonly BindableProperty DescriptionTextProperty = BindableProperty.Create(nameof(TitleText),
+
+        public static readonly BindableProperty DescriptionTextProperty = BindableProperty.Create(nameof(DescriptionText),
             typeof(string),
-            typeof(MyPage2),
+            typeof(CustomControlView),
             defaultValue: string.Empty,
             defaultBindingMode: BindingMode.OneWay,
             propertyChanged: DescriptionTextPropertyChanged);
 
         private static void DescriptionTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
-            var control = (MyPage2)bindable;
+            var control = (CustomControlView)bindable;
             control.Description.Text = newValue?.ToString();
         }
         public string DescriptionText
@@ -58,9 +57,17 @@ namespace TestApp
             }
         }
 
-        //public MyPage2()
+        public CustomControlView() 
+        {
+            InitializeComponent();
+        }
+
+        //async void btn_Clicked(Object sender, EventArgs e)
         //{
-        //    InitializeComponent();
+        //    string e1 = entry.Text;
+        //    string e2 = editor.Text;
+
+        //    await DisplayAlert("Alret", e1 + " + " + e2, "OK");
         //}
     }
 }

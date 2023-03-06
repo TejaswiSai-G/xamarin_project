@@ -10,7 +10,7 @@ namespace TestApp
         public App()
         {
             InitializeComponent();
-            MainPage = new SearchInListView();
+            MainPage = new CustomMainPage();
             //MainPage = new NavigationPage(new LoginPage_SQlLite());
         }
 

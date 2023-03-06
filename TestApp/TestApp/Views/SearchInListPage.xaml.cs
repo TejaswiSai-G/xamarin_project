@@ -20,11 +20,11 @@ namespace TestApp
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchInListView : ContentPage
+    public partial class SearchInListPage : ContentPage
     {
         private SQLiteAsyncConnection _connection;
         private ObservableCollection<Search> _search;
-        public SearchInListView()
+        public SearchInListPage()
         {
             InitializeComponent();
             _connection = DependencyService.Get<ISQLiteDb>().GetConnectionSearch();
@@ -38,13 +38,13 @@ namespace TestApp
             if (await _connection.Table<Search>().CountAsync() == 0)
             {
                 var searchInfo = new Search();
-                searchInfo.location = "Santa Monica, CA, USA";
-                var cheIn = new DateTime(2023, 12, 01);
+                searchInfo.location = "ChinaTown, LA, USA";
+                var cheIn = new DateTime(2022, 10, 02);
                 searchInfo.checkIn = cheIn.Date;
-                var cheOut = new DateTime(2016, 12, 20);
+                var cheOut = new DateTime(2022, 10, 22);
                 searchInfo.checkOut = cheOut.Date;
                 await _connection.InsertAsync(searchInfo);
-             }
+            }
             lstView.ItemsSource = _search;
         }
 
